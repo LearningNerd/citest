@@ -16,6 +16,8 @@
               echo $SENTRY_PROJECT
               echo $SENTRY_DEPLOY_ENVIRONMENT
               echo $SENTRY_AUTH_TOKEN
+              export BLAH=test123
+              echo $BLAH
    two:
      docker:
        - image: circleci/ruby:2.4.1
