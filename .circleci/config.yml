@@ -5,7 +5,7 @@
        - image: circleci/ruby:2.4.1
      environment:
         SENTRY_ORG: liz
-        SENTRY_PROJECT: buggy-sentry-project
+        SENTRY_PROJECT: citest
         SENTRY_DEPLOY_ENVIRONMENT: circleci-test1
      steps:
        - checkout
@@ -16,8 +16,13 @@
               echo $SENTRY_PROJECT
               echo $SENTRY_DEPLOY_ENVIRONMENT
               echo $SENTRY_AUTH_TOKEN
-              export BLAH=test123
-              echo $BLAH
+              curl -sL https://sentry.io/get-cli/ | bash
+              export SENTRY_RELEASE=$(sentry-cli releases propose-version)
+              sentry-cli releases new -p $SENTRY_PROJECT $SENTRY_RELEASE
+              sentry-cli releases set-commits --auto $SENTRY_RELEASE
+              sentry-cli releases finalize $SENTRY_RELEASE
+              sentry-cli releases deploys $SENTRY_RELEASE new -e $SENTRY_DEPLOY_ENVIRONMENT
+
    two:
      docker:
        - image: circleci/ruby:2.4.1
