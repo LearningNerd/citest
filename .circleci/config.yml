@@ -14,6 +14,16 @@
        - run: echo $SENTRY_PROJECT
        - run: echo $SENTRY_DEPLOY_ENVIRONMENT
        - run: echo $SENTRY_AUTH_TOKEN
+       - run: export NEWVAR="hello"
+       - run: export NEWVARTWO=(echo "helloagain")
+       - run: echo $NEWVAR
+       - run: echo $NEWVARTWO
+         # - run: curl -sL https://sentry.io/get-cli/ | bash
+         # - run: export SENTRY_RELEASE=$(sentry-cli releases propose-version)
+         # - run: sentry-cli releases new -p $SENTRY_PROJECT $SENTRY_RELEASE
+         # - run: sentry-cli releases set-commits --auto $SENTRY_RELEASE
+         # - run: sentry-cli releases finalize $SENTRY_RELEASE
+
    two:
      docker:
        - image: circleci/ruby:2.4.1
