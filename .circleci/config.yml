@@ -3,18 +3,23 @@
    one:
      docker:
        - image: circleci/ruby:2.4.1
+     environment:
+        SENTRY_ORG: liz
+        SENTRY_PROJECT: buggy-sentry-project
+        SENTRY_DEPLOY_ENVIRONMENT: circleci-test1
      steps:
        - checkout
        - run: echo "A first hello"
-       - run: sleep 25
-       - run: echo $TEST
+       - run: echo $SENTRY_ORG
+       - run: echo $SENTRY_PROJECT
+       - run: echo $SENTRY_DEPLOY_ENVIRONMENT
+       - run: echo $SENTRY_AUTH_TOKEN
    two:
      docker:
        - image: circleci/ruby:2.4.1
      steps:
        - checkout
-       - run: echo "A more familiar hi"
-       - run: sleep 15
+       - run: echo "Job two: hi!"
  workflows:
    version: 2
    "one_and_two":
