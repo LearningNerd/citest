@@ -9,11 +9,13 @@
         SENTRY_DEPLOY_ENVIRONMENT: circleci-test1
      steps:
        - checkout
-       - run: echo "A first hello"
-       - run: echo $SENTRY_ORG
-       - run: echo $SENTRY_PROJECT
-       - run: echo $SENTRY_DEPLOY_ENVIRONMENT
-       - run: echo $SENTRY_AUTH_TOKEN
+       - run:
+            command: |
+              echo "A first hello"
+              echo $SENTRY_ORG
+              echo $SENTRY_PROJECT
+              echo $SENTRY_DEPLOY_ENVIRONMENT
+              echo $SENTRY_AUTH_TOKEN
    two:
      docker:
        - image: circleci/ruby:2.4.1
