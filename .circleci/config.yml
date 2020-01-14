@@ -6,6 +6,9 @@ jobs:
     environment:
       SENTRY_ORG: liz
       SENTRY_PROJECT: citest
+    branches:
+      only:
+        - master
     steps:
       - checkout # check out the code in the project directory
       - run: | 
