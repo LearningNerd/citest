@@ -3,6 +3,9 @@
    one:
      docker:
        - image: circleci/ruby:2.4.1
+     branches:
+       only:
+         - master
      environment:
         SENTRY_ORG: liz
         SENTRY_PROJECT: citest
