@@ -11,7 +11,7 @@
        - checkout
        - run:
             command: |
-              echo "A first hello"
+              echo "Test 123"
               echo $SENTRY_ORG
               echo $SENTRY_PROJECT
               echo $SENTRY_DEPLOY_ENVIRONMENT
