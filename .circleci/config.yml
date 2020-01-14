@@ -1,6 +1,6 @@
  version: 2
  jobs:
-   one:
+   build:
      docker:
        - image: circleci/ruby:2.4.1
      branches:
@@ -26,14 +26,3 @@
               sentry-cli releases finalize $SENTRY_RELEASE
               sentry-cli releases deploys $SENTRY_RELEASE new -e $SENTRY_DEPLOY_ENVIRONMENT
 
-   two:
-     docker:
-       - image: circleci/ruby:2.4.1
-     steps:
-       - checkout
-       - run: echo "Job two says hi!"
- workflows:
-   version: 2
-   "one_and_two":
-     jobs:
-       - one
