@@ -6,6 +6,7 @@ jobs:
     environment:
       SENTRY_ORG: liz
       SENTRY_PROJECT: citest
+      TEST: hi
     branches:
       only:
         - master
